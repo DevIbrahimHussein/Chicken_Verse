@@ -3,6 +3,9 @@ extends Node
 func update(frame):
 	pass
 
+func reset():
+	pass
+
 func right_pressed():
 	return Input.is_action_pressed('ui_right')
 	

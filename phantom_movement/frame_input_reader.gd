@@ -9,6 +9,10 @@ func _init(recorded_frame_actions):
 func update(frame):
 	current_frame = frame
 
+func reset():
+	current_frame = 0
+	action_index = 0
+
 func get_frame_action():
 	update_action_index()
 	return frame_actions[action_index]

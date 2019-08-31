@@ -14,6 +14,12 @@ func _init(right_inputs, left_inputs, up_inputs, down_inputs):
 	down_reader = reader_obj.new(down_inputs)
 	
 
+func reset():
+	right_reader.reset()
+	left_reader.reset()
+	up_reader.reset()
+	down_reader.reset()
+
 func update(frame):
 	right_reader.update(frame)
 	left_reader.update(frame)
