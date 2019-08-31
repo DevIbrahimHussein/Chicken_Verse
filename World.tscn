@@ -38,6 +38,7 @@ one_shot = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="LabelHolder" type="Position2D" parent="CanvasLayer"]
+visible = false
 script = ExtResource( 5 )
 
 [node name="GameOver" type="Label" parent="CanvasLayer/LabelHolder"]
@@ -46,3 +47,10 @@ margin_top = 26.4705
 margin_right = 252.209
 margin_bottom = 40.4705
 text = "Game Over!"
+
+[node name="RestartButton" type="Button" parent="CanvasLayer/LabelHolder"]
+margin_left = 185.924
+margin_top = 54.8317
+margin_right = 242.924
+margin_bottom = 74.8317
+text = "Restart"

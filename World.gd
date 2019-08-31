@@ -17,6 +17,7 @@ func _ready():
 	watcher = $Watcher
 	$RunTimer.connect("timeout", self, 'restart_level')
 	Globals.emitter.connect('game_end', self, 'on_game_end')
+	Globals.emitter.connect('game_start', self, 'reset_game')
 	reset_game()
 	
 
@@ -24,7 +25,6 @@ func reset_game():
 	game_ended = false
 	control_readers = []
 	restart_level()
-	Globals.emitter.emit('game_start')
 	
 
 func on_game_end():
@@ -70,6 +70,7 @@ func _process(delta):
 	for player in players:
 		if (player.position.x > 600):
 			player.modulate = Color(1, 1, 1, 0)
+			player.deactivate_collisions()
 			
 	if (current_player().position.x > 600):
 		control_readers.append(watcher.get_reader())
