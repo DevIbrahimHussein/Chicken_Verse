@@ -28,4 +28,4 @@ func get_is_pressed():
 func get_is_just_pressed():
 	if (frame_actions.size() == 0):
 		return false
-	return get_frame_action().frame == current_frame
+	return get_frame_action().frame == current_frame && get_frame_action().is_pressed
