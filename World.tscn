@@ -24,7 +24,11 @@ position = Vector2( 450, 95 )
 current = true
 zoom = Vector2( 1.7, 1.7 )
 limit_right = 3000
+smoothing_enabled = true
 drag_margin_left = 0.0
 drag_margin_top = 0.0
 drag_margin_right = 0.0
 drag_margin_bottom = 0.0
+
+[node name="RunTimer" type="Timer" parent="."]
+one_shot = true

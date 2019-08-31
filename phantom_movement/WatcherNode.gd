@@ -25,9 +25,6 @@ func _process(delta):
 	left_watcher.update(current_frame)
 	up_watcher.update(current_frame)
 	down_watcher.update(current_frame)
-#	if Input.is_action_just_pressed("ui_accept"):
-#		for action in right_watcher.action_records:
-#			print(action.is_pressed)
 	current_frame += 1
 	
 func get_reader():

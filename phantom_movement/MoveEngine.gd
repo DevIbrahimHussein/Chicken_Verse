@@ -68,7 +68,7 @@ func move():
 			jump_count += 1
 	else:
 		if (motion.y < -30 && motion.y > -500):
-			motion.y = -30
+			motion.y += 90
 			
 	
 

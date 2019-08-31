@@ -1,8 +1,19 @@
 extends Position2D
 
+var active = true
+
 func _ready():
-	pass
+	Globals.emitter.connect('run_start', self, 'reset')
+	Globals.emitter.connect('run_end', self, 'stop')
+	Globals.emitter.connect('game_end', self, 'stop')
+	
+func reset():
+	active = true
+	position.x = 0
+	
+func stop():
+	active = false
 	
 func _process(delta):
-#	$Camera2D.position.x  += 0.75
-	position.x += 0.75
+	if active:
+		position.x += 0.75
