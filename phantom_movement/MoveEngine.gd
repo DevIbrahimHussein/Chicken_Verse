@@ -50,6 +50,9 @@ func move():
 		else:
 			current_speed += SPEED / FRAMES_TO_STOP * (-current_speed / abs(current_speed))
 	
+	if parent.is_on_floor() != on_ground && !on_ground && parent.has_method('on_land'):
+		parent.on_land()
+		
 	on_ground = parent.is_on_floor()
 	if on_ground:
 		jump_count = 0
@@ -58,12 +61,14 @@ func move():
 		
 	if move_controller.up_just_pressed() && not on_ground && jump_count == 1:
 		jump()
-		
+		if (parent.has_method('on_double_jump')):
+			parent.on_double_jump()
 		
 	if move_controller.up_pressed():
 		if OS.get_ticks_msec() - last_ground_time < 200 && jump_count == 0:
 			on_ground = false
 			jump()
+			
 	else:
 		if (motion.y < -30 && motion.y > -500):
 			motion.y += 90
