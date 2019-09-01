@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://World.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Environment/space bg.png" type="Texture" id=2]
@@ -8,7 +8,105 @@
 [ext_resource path="res://Audio/316920__rudmer-rotteveel__chicken-single-alarm-call.wav" type="AudioStream" id=6]
 [ext_resource path="res://UI/GameOverLabelHolder.gd" type="Script" id=7]
 [ext_resource path="res://UI/RunStatePrompts.tscn" type="PackedScene" id=8]
-[ext_resource path="res://JungleDirtTileSet.tres" type="TileSet" id=9]
+[ext_resource path="res://Sprites/Environment/floor tile-02.png" type="Texture" id=9]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[sub_resource type="ConvexPolygonShape2D" id=2]
+points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[sub_resource type="ConvexPolygonShape2D" id=4]
+points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[sub_resource type="ConvexPolygonShape2D" id=5]
+points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[sub_resource type="ConvexPolygonShape2D" id=6]
+points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[sub_resource type="TileSet" id=7]
+0/name = "floor tile-02.png 0"
+0/texture = ExtResource( 9 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 32, 32 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 2 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 3 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 4 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+1/name = "floor tile-02.png 1"
+1/texture = ExtResource( 9 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 64, 0, 32, 32 )
+1/tile_mode = 2
+1/autotile/icon_coordinate = Vector2( 0, 0 )
+1/autotile/tile_size = Vector2( 32, 32 )
+1/autotile/spacing = 0
+1/autotile/occluder_map = [  ]
+1/autotile/navpoly_map = [  ]
+1/autotile/z_index_map = [  ]
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 5 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+1/z_index = 0
+2/name = "floor tile-02.png 2"
+2/texture = ExtResource( 9 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 32, 0, 32, 32 )
+2/tile_mode = 2
+2/autotile/icon_coordinate = Vector2( 0, 0 )
+2/autotile/tile_size = Vector2( 32, 32 )
+2/autotile/spacing = 0
+2/autotile/occluder_map = [  ]
+2/autotile/navpoly_map = [  ]
+2/autotile/z_index_map = [  ]
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 6 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+2/z_index = 0
 
 [node name="World" type="Node"]
 script = ExtResource( 1 )
@@ -24,7 +122,6 @@ stretch_mode = 2
 [node name="Watcher" parent="." instance=ExtResource( 3 )]
 
 [node name="Position2D" type="Position2D" parent="."]
-editor/display_folded = true
 position = Vector2( 0, -40 )
 script = ExtResource( 4 )
 
@@ -92,8 +189,8 @@ position = Vector2( 279.255, 76.1603 )
 [node name="TilemapPos" type="Position2D" parent="."]
 position = Vector2( 36.0996, -4.55225 )
 
-[node name="TileMap" type="TileMap" parent="TilemapPos"]
-tile_set = ExtResource( 9 )
+[node name="Ground" type="TileMap" parent="TilemapPos"]
+tile_set = SubResource( 7 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( -65530, 2, 0, -65529, 2, 0, -65510, 2, 0, -65509, 2, 0, -65508, 2, 0, -65507, 2, 0, 39, 2, 0, 40, 2, 0, 41, 2, 0, 42, 2, 0, 65548, 1, 0, 65549, 2, 0, 65550, 2, 0, 65551, 3, 0, 196630, 2, 0, 196631, 2, 0, 196632, 2, 0, 262188, 2, 0, 262189, 2, 0, 262190, 2, 0, 262191, 2, 0, 327685, 2, 0, 327686, 2, 0, 327687, 2, 0, 327688, 2, 0, 327711, 2, 0, 327712, 2, 0, 327713, 2, 0, 327714, 2, 0, 327715, 2, 0, 327716, 2, 0, 393231, 2, 0, 393232, 2, 0, 393233, 2, 0, 393234, 2, 0, 589824, 2, 0, 589825, 2, 0, 589826, 2, 0, 589827, 2, 0, 589828, 2, 0, 589829, 2, 0, 589830, 2, 0, 589831, 2, 0, 589832, 2, 0, 589833, 2, 0, 589834, 2, 0, 589835, 2, 0, 589836, 2, 0, 589837, 2, 0, 589838, 2, 0, 589839, 2, 0, 589840, 2, 0, 589841, 2, 0, 589842, 2, 0, 589843, 2, 0, 589844, 2, 0, 589845, 2, 0, 589846, 2, 0, 589851, 2, 0, 589852, 2, 0, 589853, 2, 0, 589854, 2, 0, 589855, 2, 0, 589856, 2, 0, 589861, 2, 0, 589862, 2, 0, 589863, 2, 0, 589864, 2, 0, 589865, 2, 0, 589866, 2, 0, 589867, 2, 0, 589868, 2, 0, 589869, 2, 0, 589870, 2, 0, 589871, 2, 0, 589872, 2, 0, 589873, 2, 0, 589874, 2, 0, 589875, 2, 0, 589876, 2, 0, 589877, 2, 0, 589878, 2, 0, 655360, 7, 0, 655361, 8, 0, 655362, 8, 0, 655363, 8, 0, 655364, 8, 0, 655365, 8, 0, 655366, 8, 0, 655367, 8, 0, 655368, 8, 0, 655369, 8, 0, 655370, 8, 0, 655371, 8, 0, 655372, 8, 0, 655373, 8, 0, 655374, 8, 0, 655375, 8, 0, 655376, 8, 0, 655377, 8, 0, 655378, 8, 0, 655379, 9, 0 )
+tile_data = PoolIntArray( -65530, 0, 0, -65529, 1, 0, -65510, 0, 0, -65509, 2, 0, -65508, 2, 0, -65507, 1, 0, 39, 0, 0, 40, 2, 0, 41, 2, 0, 42, 1, 0, 65548, 0, 0, 65549, 2, 0, 65550, 2, 0, 65551, 1, 0, 196630, 0, 0, 196631, 2, 0, 196632, 1, 0, 262188, 0, 0, 262189, 2, 0, 262190, 2, 0, 262191, 1, 0, 327685, 0, 0, 327686, 2, 0, 327687, 2, 0, 327688, 1, 0, 327711, 0, 0, 327712, 2, 0, 327713, 2, 0, 327714, 2, 0, 327715, 2, 0, 327716, 1, 0, 393231, 0, 0, 393232, 2, 0, 393233, 2, 0, 393234, 1, 0, 589824, 0, 0, 589825, 2, 0, 589826, 2, 0, 589827, 2, 0, 589828, 2, 0, 589829, 2, 0, 589830, 2, 0, 589831, 2, 0, 589832, 2, 0, 589833, 2, 0, 589834, 2, 0, 589835, 2, 0, 589836, 2, 0, 589837, 2, 0, 589838, 2, 0, 589839, 2, 0, 589840, 2, 0, 589841, 2, 0, 589842, 2, 0, 589843, 2, 0, 589844, 2, 0, 589845, 2, 0, 589846, 1, 0, 589851, 0, 0, 589852, 2, 0, 589853, 2, 0, 589854, 2, 0, 589855, 2, 0, 589856, 1, 0, 589861, 0, 0, 589862, 2, 0, 589863, 2, 0, 589864, 2, 0, 589865, 2, 0, 589866, 2, 0, 589867, 2, 0, 589868, 2, 0, 589869, 2, 0, 589870, 2, 0, 589871, 2, 0, 589872, 2, 0, 589873, 2, 0, 589874, 2, 0, 589875, 2, 0, 589876, 2, 0, 589877, 2, 0, 589878, 1, 0 )

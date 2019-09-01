@@ -1,7 +1,6 @@
 extends KinematicBody2D
 
 var move_controller
-var number_of_overlaps = 0
 
 var collisions_active = false
 var is_main_player = false
@@ -21,6 +20,10 @@ func activate_collisions():
 func deactivate_collisions():
 	$Area2D/CollisionShape2D.disabled = true
 
+func set_as_main_player():
+	is_main_player = true
+	$ArrowIndicator.visible = true
+	$ArrowHover.play('Hover')
 
 func on_jump():
 	if (is_main_player):

@@ -43,7 +43,7 @@ func restart_run():
 	watcher.init_watchers()
 	var current_player = spawn_player(input_controller_obj.new())
 	players.append(current_player)
-	current_player.is_main_player = true
+	current_player.set_as_main_player()
 	current_player.blink()
 	current_player.z_index = 1
 	for reader in control_readers:
@@ -76,7 +76,7 @@ func _process(delta):
 	if (game_ended && Input.is_action_just_pressed("ui_accept")):
 		Globals.emitter.emit('game_start')
 	var xCamera = camera_anchor.position.x + camera_edge_offset
-	var widthViewport = get_viewport().size.x
+	var widthViewport = OS.window_size.x
 	
 	if (players.size() == 0):
 		return
