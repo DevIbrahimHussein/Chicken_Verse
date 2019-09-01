@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://World.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Environment/space bg.png" type="Texture" id=2]
@@ -10,7 +10,10 @@
 [ext_resource path="res://Sprites/Environment/floor tile-02.png" type="Texture" id=8]
 [ext_resource path="res://UI/FontedText.tscn" type="PackedScene" id=9]
 [ext_resource path="res://UI/GameOverLabelHolder.gd" type="Script" id=10]
-[ext_resource path="res://UI/RunStatePrompts.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Sprites/death_screen-01.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/button1.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/button2.png" type="Texture" id=13]
+[ext_resource path="res://UI/RunStatePrompts.tscn" type="PackedScene" id=14]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -180,22 +183,30 @@ text = "Run: 0"
 
 [node name="LabelHolder" type="Position2D" parent="CanvasLayer"]
 visible = false
-position = Vector2( 274.313, 107.148 )
+position = Vector2( 215.499, 204.382 )
+scale = Vector2( 0.4, 0.4 )
 script = ExtResource( 10 )
 
+[node name="death_screen-01" type="Sprite" parent="CanvasLayer/LabelHolder"]
+position = Vector2( 283.132, -160.609 )
+scale = Vector2( 0.934198, 0.934198 )
+texture = ExtResource( 11 )
+
 [node name="GameOver" parent="CanvasLayer/LabelHolder" instance=ExtResource( 9 )]
+visible = false
 margin_left = -19.2392
 margin_top = -47.7662
 margin_right = 18.7608
 margin_bottom = -22.7662
 text = "Game Over"
 
-[node name="RestartButton" type="Button" parent="CanvasLayer/LabelHolder"]
-margin_left = -29.0349
-margin_top = 38.6566
-margin_right = 27.9651
-margin_bottom = 58.6566
-text = "Restart"
+[node name="RestartButton" type="TextureButton" parent="CanvasLayer/LabelHolder"]
+margin_left = 171.098
+margin_top = -17.1664
+margin_right = 343.098
+margin_bottom = 154.834
+texture_normal = ExtResource( 12 )
+texture_hover = ExtResource( 13 )
 
-[node name="Prompts" parent="CanvasLayer" instance=ExtResource( 11 )]
+[node name="Prompts" parent="CanvasLayer" instance=ExtResource( 14 )]
 position = Vector2( 279.255, 76.1603 )
