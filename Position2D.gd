@@ -16,4 +16,4 @@ func stop():
 	
 func _process(delta):
 	if active:
-		position.x += 0.75
+		position.x += 2.1

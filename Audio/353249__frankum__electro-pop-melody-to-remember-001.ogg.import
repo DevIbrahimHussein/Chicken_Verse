@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/353249__frankum__electro-pop-melody-to-remember-001.ogg-b0a82b444dcea0978c05e504fc33c7d7.oggstr"
+
+[deps]
+
+source_file="res://Audio/353249__frankum__electro-pop-melody-to-remember-001.ogg"
+dest_files=[ "res://.import/353249__frankum__electro-pop-melody-to-remember-001.ogg-b0a82b444dcea0978c05e504fc33c7d7.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

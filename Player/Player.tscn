@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://KinematicBody2D.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Player/Jump1.png" type="Texture" id=2]
@@ -10,6 +10,8 @@
 [ext_resource path="res://Sprites/Player/Run7.png" type="Texture" id=8]
 [ext_resource path="res://Sprites/Player/Idle0.png" type="Texture" id=9]
 [ext_resource path="res://phantom_movement/MoveEngine.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Audio/cluck.wav" type="AudioStream" id=11]
+[ext_resource path="res://Audio/cluck2.wav" type="AudioStream" id=12]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -69,6 +71,7 @@ shape = SubResource( 2 )
 [node name="MoveEngine" parent="." instance=ExtResource( 10 )]
 
 [node name="Area2D" type="Area2D" parent="."]
+editor/display_folded = true
 collision_layer = 4
 collision_mask = 4
 
@@ -82,3 +85,10 @@ autostart = true
 
 [node name="Blink" type="AnimationPlayer" parent="."]
 anims/Blink = SubResource( 4 )
+
+[node name="CluckAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 11 )
+
+[node name="CluckAudio2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 12 )
+attenuation = 0.0412346

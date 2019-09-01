@@ -5,8 +5,8 @@ var input_reader_controller_obj = load('res://phantom_movement/cardinal_input_re
 var input_controller_obj = load('res://phantom_movement/input_movement.gd')
 var frame_action = load('res://phantom_movement/frame_action.gd')
 
-var player_start_pos = Vector2(120, 120)
-var level_width = 650
+var player_start_pos = Vector2(120, 240)
+var level_width = 1700
 var watcher
 var players = []
 var control_readers = []
@@ -43,12 +43,14 @@ func restart_run():
 	watcher.init_watchers()
 	var current_player = spawn_player(input_controller_obj.new())
 	players.append(current_player)
+	current_player.is_main_player = true
 	current_player.blink()
 	current_player.z_index = 1
 	for reader in control_readers:
 		reader.reset()
+		var modulate_ratio = 0.7
 		var phantom_player = spawn_player(reader)
-		phantom_player.modulate = Color(0.6, 0.6, 0.6)
+		phantom_player.modulate = Color(modulate_ratio, modulate_ratio, modulate_ratio)
 		players.append(phantom_player)
 	Globals.emitter.emit('run_start', players.size())
 		
@@ -60,6 +62,7 @@ func destroy_players():
 func on_run_end():
 	destroy_players()
 	$NewRunTimer.start()
+	$Position2D/WinChickenCall.play(0)
 	Globals.emitter.emit('run_end')
 
 func spawn_player(movement_controller):
@@ -70,6 +73,8 @@ func spawn_player(movement_controller):
 	return player
 
 func _process(delta):
+	if (game_ended && Input.is_action_just_pressed("ui_accept")):
+		Globals.emitter.emit('game_start')
 	var xCamera = camera_anchor.position.x + camera_edge_offset
 	var widthViewport = get_viewport().size.x
 	
@@ -88,7 +93,7 @@ func _process(delta):
 		Globals.completed_runs_count += 1
 		on_run_end()
 		return
-	if (player.position.x < xCamera || player.position.x > widthViewport || player.position.y > 350):
+	if (player.position.x < xCamera || player.position.x > xCamera + widthViewport || player.position.y > 350):
 		Globals.emitter.emit('game_end')
 		return
 	

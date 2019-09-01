@@ -1,20 +1,32 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://World.gd" type="Script" id=1]
-[ext_resource path="res://phantom_movement/Watcher.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Position2D.gd" type="Script" id=3]
-[ext_resource path="res://UI/GameOverLabelHolder.gd" type="Script" id=4]
-[ext_resource path="res://UI/RunStatePrompts.tscn" type="PackedScene" id=5]
-[ext_resource path="res://JungleDirtTileSet.tres" type="TileSet" id=6]
+[ext_resource path="res://Sprites/Environment/space bg.png" type="Texture" id=2]
+[ext_resource path="res://phantom_movement/Watcher.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Position2D.gd" type="Script" id=4]
+[ext_resource path="res://Audio/353249__frankum__electro-pop-melody-to-remember-001.ogg" type="AudioStream" id=5]
+[ext_resource path="res://Audio/316920__rudmer-rotteveel__chicken-single-alarm-call.wav" type="AudioStream" id=6]
+[ext_resource path="res://UI/GameOverLabelHolder.gd" type="Script" id=7]
+[ext_resource path="res://UI/RunStatePrompts.tscn" type="PackedScene" id=8]
+[ext_resource path="res://JungleDirtTileSet.tres" type="TileSet" id=9]
 
 [node name="World" type="Node"]
 script = ExtResource( 1 )
 
-[node name="Watcher" parent="." instance=ExtResource( 2 )]
+[node name="Background" type="TextureRect" parent="."]
+margin_left = -318.919
+margin_top = -304.88
+margin_right = 2902.08
+margin_bottom = 418.12
+texture = ExtResource( 2 )
+stretch_mode = 2
+
+[node name="Watcher" parent="." instance=ExtResource( 3 )]
 
 [node name="Position2D" type="Position2D" parent="."]
+editor/display_folded = true
 position = Vector2( 0, -40 )
-script = ExtResource( 3 )
+script = ExtResource( 4 )
 
 [node name="Camera2D" type="Camera2D" parent="Position2D"]
 position = Vector2( 321.396, 135.084 )
@@ -30,39 +42,58 @@ drag_margin_bottom = 0.0
 [node name="CameraEdgeIndicator" type="Position2D" parent="Position2D"]
 position = Vector2( -62.618, 0 )
 
+[node name="Loop" type="AudioStreamPlayer2D" parent="Position2D"]
+position = Vector2( 0, 40 )
+stream = ExtResource( 5 )
+autoplay = true
+
+[node name="WinChickenCall" type="AudioStreamPlayer2D" parent="Position2D"]
+stream = ExtResource( 6 )
+volume_db = -5.0
+
 [node name="NewRunTimer" type="Timer" parent="."]
 wait_time = 1.3
 one_shot = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+editor/display_folded = true
 
 [node name="LabelHolder" type="Position2D" parent="CanvasLayer"]
+editor/display_folded = true
 visible = false
 position = Vector2( 279.224, 76.4543 )
-script = ExtResource( 4 )
+script = ExtResource( 7 )
 
 [node name="GameOver" type="Label" parent="CanvasLayer/LabelHolder"]
-margin_left = -39.7491
-margin_top = -21.175
-margin_right = 37.2509
-margin_bottom = -7.17498
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -37.3659
+margin_top = -21.5722
+margin_right = 39.6341
+margin_bottom = -7.57219
+grow_horizontal = 2
+grow_vertical = 2
 text = "Game Over!"
+align = 1
+valign = 1
 
 [node name="RestartButton" type="Button" parent="CanvasLayer/LabelHolder"]
 margin_left = -29.0349
-margin_top = 7.18625
+margin_top = 28.8347
 margin_right = 27.9651
-margin_bottom = 27.1863
+margin_bottom = 48.8347
 text = "Restart"
 
-[node name="Prompts" parent="CanvasLayer" instance=ExtResource( 5 )]
+[node name="Prompts" parent="CanvasLayer" instance=ExtResource( 8 )]
 position = Vector2( 279.255, 76.1603 )
 
 [node name="TilemapPos" type="Position2D" parent="."]
-position = Vector2( 37.46, 0 )
+position = Vector2( 36.0996, -4.55225 )
 
 [node name="TileMap" type="TileMap" parent="TilemapPos"]
-tile_set = ExtResource( 6 )
+tile_set = ExtResource( 9 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( 131085, 2, 0, 131086, 2, 0, 131087, 2, 0, 131088, 2, 0, 262152, 2, 0, 262153, 2, 0, 262154, 2, 0, 327682, 2, 0, 327683, 2, 0, 327684, 2, 0, 524288, 1, 0, 524289, 2, 0, 524290, 2, 0, 524291, 2, 0, 524292, 2, 0, 524293, 2, 0, 524294, 2, 0, 524295, 2, 0, 524296, 2, 0, 524297, 2, 0, 524298, 2, 0, 524299, 2, 0, 524300, 2, 0, 524301, 2, 0, 524302, 2, 0, 524303, 2, 0, 524304, 2, 0, 524305, 2, 0, 524306, 2, 0, 524307, 3, 0, 589824, 4, 0, 589825, 5, 0, 589826, 5, 0, 589827, 5, 0, 589828, 5, 0, 589829, 5, 0, 589830, 5, 0, 589831, 5, 0, 589832, 5, 0, 589833, 5, 0, 589834, 5, 0, 589835, 5, 0, 589836, 5, 0, 589837, 5, 0, 589838, 5, 0, 589839, 5, 0, 589840, 5, 0, 589841, 5, 0, 589842, 5, 0, 589843, 6, 0, 655360, 7, 0, 655361, 8, 0, 655362, 8, 0, 655363, 8, 0, 655364, 8, 0, 655365, 8, 0, 655366, 8, 0, 655367, 8, 0, 655368, 8, 0, 655369, 8, 0, 655370, 8, 0, 655371, 8, 0, 655372, 8, 0, 655373, 8, 0, 655374, 8, 0, 655375, 8, 0, 655376, 8, 0, 655377, 8, 0, 655378, 8, 0, 655379, 9, 0 )
+tile_data = PoolIntArray( -65530, 2, 0, -65529, 2, 0, -65510, 2, 0, -65509, 2, 0, -65508, 2, 0, -65507, 2, 0, 39, 2, 0, 40, 2, 0, 41, 2, 0, 42, 2, 0, 65548, 1, 0, 65549, 2, 0, 65550, 2, 0, 65551, 3, 0, 196630, 2, 0, 196631, 2, 0, 196632, 2, 0, 262188, 2, 0, 262189, 2, 0, 262190, 2, 0, 262191, 2, 0, 327685, 2, 0, 327686, 2, 0, 327687, 2, 0, 327688, 2, 0, 327711, 2, 0, 327712, 2, 0, 327713, 2, 0, 327714, 2, 0, 327715, 2, 0, 327716, 2, 0, 393231, 2, 0, 393232, 2, 0, 393233, 2, 0, 393234, 2, 0, 589824, 2, 0, 589825, 2, 0, 589826, 2, 0, 589827, 2, 0, 589828, 2, 0, 589829, 2, 0, 589830, 2, 0, 589831, 2, 0, 589832, 2, 0, 589833, 2, 0, 589834, 2, 0, 589835, 2, 0, 589836, 2, 0, 589837, 2, 0, 589838, 2, 0, 589839, 2, 0, 589840, 2, 0, 589841, 2, 0, 589842, 2, 0, 589843, 2, 0, 589844, 2, 0, 589845, 2, 0, 589846, 2, 0, 589851, 2, 0, 589852, 2, 0, 589853, 2, 0, 589854, 2, 0, 589855, 2, 0, 589856, 2, 0, 589861, 2, 0, 589862, 2, 0, 589863, 2, 0, 589864, 2, 0, 589865, 2, 0, 589866, 2, 0, 589867, 2, 0, 589868, 2, 0, 589869, 2, 0, 589870, 2, 0, 589871, 2, 0, 589872, 2, 0, 589873, 2, 0, 589874, 2, 0, 589875, 2, 0, 589876, 2, 0, 589877, 2, 0, 589878, 2, 0, 655360, 7, 0, 655361, 8, 0, 655362, 8, 0, 655363, 8, 0, 655364, 8, 0, 655365, 8, 0, 655366, 8, 0, 655367, 8, 0, 655368, 8, 0, 655369, 8, 0, 655370, 8, 0, 655371, 8, 0, 655372, 8, 0, 655373, 8, 0, 655374, 8, 0, 655375, 8, 0, 655376, 8, 0, 655377, 8, 0, 655378, 8, 0, 655379, 9, 0 )

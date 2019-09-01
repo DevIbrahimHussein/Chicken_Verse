@@ -4,6 +4,7 @@ var move_controller
 var number_of_overlaps = 0
 
 var collisions_active = false
+var is_main_player = false
 
 func _ready():
 	move_controller = $MoveEngine.move_controller
@@ -19,6 +20,14 @@ func activate_collisions():
 	
 func deactivate_collisions():
 	$Area2D/CollisionShape2D.disabled = true
+
+
+func on_jump():
+	if (is_main_player):
+		if (randf() < 0.5):
+			$CluckAudio.play(0)
+		else:
+			$CluckAudio2.play(0)
 
 func blink():
 	$Blink.play("Blink")

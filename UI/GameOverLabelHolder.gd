@@ -10,6 +10,7 @@ func on_game_start():
 	visible = false
 	
 func on_game_end():
+	$GameOver.text = "You jumped to\n%s\nuniverses before causing the space time\ncontinuum to collapse on us all" % Globals.completed_runs_count
 	visible = true
 	
 func restart_game():

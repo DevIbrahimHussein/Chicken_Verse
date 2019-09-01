@@ -57,15 +57,13 @@ func move():
 		last_ground_time = OS.get_ticks_msec()
 		
 	if move_controller.up_just_pressed() && not on_ground && jump_count == 1:
-		motion.y = JUMP_HEIGHT
-		jump_count += 1
+		jump()
 		
 		
 	if move_controller.up_pressed():
 		if OS.get_ticks_msec() - last_ground_time < 200 && jump_count == 0:
-			motion.y = JUMP_HEIGHT
 			on_ground = false
-			jump_count += 1
+			jump()
 	else:
 		if (motion.y < -30 && motion.y > -500):
 			motion.y += 90
@@ -73,3 +71,10 @@ func move():
 	
 
 	parent.move_and_slide(Vector2(current_speed, motion.y), UP)
+
+func jump():
+	if (parent.has_method('on_jump')):
+		parent.on_jump()
+	motion.y = JUMP_HEIGHT
+	jump_count += 1
+
