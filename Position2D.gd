@@ -3,15 +3,15 @@ extends Position2D
 var active = true
 
 func _ready():
-	Globals.emitter.connect('run_start', self, 'reset')
+	Globals.emitter.connect('run_start', self, 'start')
 	Globals.emitter.connect('run_end', self, 'stop')
 	Globals.emitter.connect('game_end', self, 'stop')
 	
-func reset():
+func start(run_count):
 	active = true
-	position.x = 0
 	
 func stop():
+	position.x = 0
 	active = false
 	
 func _process(delta):

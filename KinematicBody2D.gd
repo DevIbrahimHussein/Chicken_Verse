@@ -19,6 +19,9 @@ func activate_collisions():
 	
 func deactivate_collisions():
 	$Area2D/CollisionShape2D.disabled = true
+
+func blink():
+	$Blink.play("Blink")
 	
 func _process(delta):
 	if move_controller.right_pressed():

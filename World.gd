@@ -1,21 +1,25 @@
 extends Node
 
-
-
 var player_scene = preload('res://Player/Player.tscn')
 var input_reader_controller_obj = load('res://phantom_movement/cardinal_input_reader.gd')
 var input_controller_obj = load('res://phantom_movement/input_movement.gd')
 var frame_action = load('res://phantom_movement/frame_action.gd')
 
+var player_start_pos = Vector2(120, 120)
+var level_width = 650
 var watcher
 var players = []
 var control_readers = []
+var camera_anchor
+var camera_edge_offset
 
 var game_ended = false
 
 func _ready():
 	watcher = $Watcher
-	$RunTimer.connect("timeout", self, 'restart_level')
+	camera_anchor = $Position2D
+	camera_edge_offset = camera_anchor.position.x + $Position2D/CameraEdgeIndicator.position.x
+	$NewRunTimer.connect("timeout", self, 'restart_run')
 	Globals.emitter.connect('game_end', self, 'on_game_end')
 	Globals.emitter.connect('game_start', self, 'reset_game')
 	reset_game()
@@ -24,27 +28,29 @@ func _ready():
 func reset_game():
 	game_ended = false
 	control_readers = []
-	restart_level()
+	Globals.completed_runs_count = 0
+	restart_run()
 	
-
 func on_game_end():
 	if (game_ended):
 		return
 	game_ended = true
 	destroy_players()
-	print('Dead')
 
-func restart_level():
-	$RunTimer.stop()
+func restart_run():
+	$NewRunTimer.stop()
 	destroy_players()
 	watcher.init_watchers()
-	players.append(spawn_player(input_controller_obj.new()))
+	var current_player = spawn_player(input_controller_obj.new())
+	players.append(current_player)
+	current_player.blink()
+	current_player.z_index = 1
 	for reader in control_readers:
 		reader.reset()
 		var phantom_player = spawn_player(reader)
 		phantom_player.modulate = Color(0.6, 0.6, 0.6)
 		players.append(phantom_player)
-	Globals.emitter.emit('run_start')
+	Globals.emitter.emit('run_start', players.size())
 		
 func destroy_players():
 	for player in players:
@@ -53,28 +59,39 @@ func destroy_players():
 	
 func on_run_end():
 	destroy_players()
-	$RunTimer.start()
+	$NewRunTimer.start()
 	Globals.emitter.emit('run_end')
 
 func spawn_player(movement_controller):
 	var player = player_scene.instance()
 	player.get_node('MoveEngine').set_move_controller(movement_controller)
-	player.position = Vector2(80, 120)
+	player.position = player_start_pos
 	add_child(player)
 	return player
 
 func _process(delta):
+	var xCamera = camera_anchor.position.x + camera_edge_offset
+	var widthViewport = get_viewport().size.x
+	
 	if (players.size() == 0):
 		return
 	
 	for player in players:
-		if (player.position.x > 600):
+		if (player.position.x > level_width):
 			player.modulate = Color(1, 1, 1, 0)
 			player.deactivate_collisions()
-			
-	if (current_player().position.x > 600):
+		
+	
+	var player = current_player()
+	if (player.position.x > level_width):
 		control_readers.append(watcher.get_reader())
+		Globals.completed_runs_count += 1
 		on_run_end()
+		return
+	if (player.position.x < xCamera || player.position.x > widthViewport || player.position.y > 350):
+		Globals.emitter.emit('game_end')
+		return
+	
 		
 func current_player():
 	return players[0]

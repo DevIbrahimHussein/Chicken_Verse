@@ -8,7 +8,7 @@ var last_ground_time = 0
 
 const UP = Vector2(0,-1)
 const GRAVITY = 20
-const SPEED = 200
+const SPEED = 300
 const JUMP_HEIGHT = -550
 const FRAMES_TO_FULL_SPEED = 4
 const FRAMES_TO_STOP = 6
