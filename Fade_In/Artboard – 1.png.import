@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Artboard – 1.png-6403da04abf44303ab52e2cbc0c05399.stex"
+path="res://.import/Artboard – 1.png-8e5fbd5b09ff2a573e2304927dac9c62.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Artboard – 1.png"
-dest_files=[ "res://.import/Artboard – 1.png-6403da04abf44303ab52e2cbc0c05399.stex" ]
+source_file="res://Fade_In/Artboard – 1.png"
+dest_files=[ "res://.import/Artboard – 1.png-8e5fbd5b09ff2a573e2304927dac9c62.stex" ]
 
 [params]
 
