@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://title_screen.gd" type="Script" id=1]
 [ext_resource path="res://Buttons/NewGameButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://menu_screen-01.png" type="Texture" id=3]
 [ext_resource path="res://Fade_In/FadeIn.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Sprites/button1.png" type="Texture" id=5]
+[ext_resource path="res://animatedchickenidle.tscn" type="PackedScene" id=6]
 
 [node name="TitleScreen" type="Control"]
 anchor_right = 1.0
@@ -52,7 +53,12 @@ size_flags_vertical = 3
 visible = false
 
 [node name="button1" type="Sprite" parent="."]
-position = Vector2( 650.243, 613.806 )
-scale = Vector2( 1.00617, 1.00768 )
+position = Vector2( 651.276, 616.49 )
+scale = Vector2( 0.970128, 0.97029 )
 texture = ExtResource( 5 )
+
+[node name="Sprite" parent="." instance=ExtResource( 6 )]
+position = Vector2( 615.41, 244.673 )
+scale = Vector2( 0.75, 0.75 )
+frame = 17
 [connection signal="fade_finished" from="FadeIn" to="." method="_on_FadeIn_fade_finished"]
