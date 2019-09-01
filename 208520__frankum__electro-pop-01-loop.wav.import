@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/208520__frankum__electro-pop-01-loop.wav-faa93546d3c85c3eed1ff05863ee3379.sample"
+
+[deps]
+
+source_file="res://208520__frankum__electro-pop-01-loop.wav"
+dest_files=[ "res://.import/208520__frankum__electro-pop-01-loop.wav-faa93546d3c85c3eed1ff05863ee3379.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
