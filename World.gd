@@ -73,6 +73,7 @@ func spawn_player(movement_controller):
 	return player
 
 func _process(delta):
+	$CanvasLayer/Label.text = "Run: %s" % Globals.completed_runs_count
 	if (game_ended && Input.is_action_just_pressed("ui_accept")):
 		Globals.emitter.emit('game_start')
 	var xCamera = camera_anchor.position.x + camera_edge_offset
