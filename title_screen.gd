@@ -11,6 +11,8 @@ func _ready():
 
 func _on_Button_pressed(scene_to_load):
 	scene_path_to_load = scene_to_load
+	$button1.visible = false
+	$Sprite.visible = false
 	$FadeIn.show()
 	$FadeIn.fade_in()
 

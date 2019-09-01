@@ -16,4 +16,4 @@ func stop():
 	
 func _process(delta):
 	if active:
-		position.x += 2.1
+		position.x += (180 * delta)

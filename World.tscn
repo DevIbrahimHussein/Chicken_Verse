@@ -175,11 +175,11 @@ tile_data = PoolIntArray( -65530, 0, 0, -65529, 1, 0, -65510, 0, 0, -65509, 2, 0
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Label" parent="CanvasLayer" instance=ExtResource( 9 )]
-margin_left = 10.5734
-margin_top = 5.12846
-margin_right = 64.5734
-margin_bottom = 30.1285
-text = "Run: 0"
+margin_left = 15.7899
+margin_top = 7.56684
+margin_right = 81.7899
+margin_bottom = 32.5669
+text = "Loop: 0"
 
 [node name="LabelHolder" type="Position2D" parent="CanvasLayer"]
 visible = false

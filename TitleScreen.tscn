@@ -60,5 +60,5 @@ texture = ExtResource( 5 )
 [node name="Sprite" parent="." instance=ExtResource( 6 )]
 position = Vector2( 615.41, 244.673 )
 scale = Vector2( 0.75, 0.75 )
-frame = 17
+frame = 18
 [connection signal="fade_finished" from="FadeIn" to="." method="_on_FadeIn_fade_finished"]
